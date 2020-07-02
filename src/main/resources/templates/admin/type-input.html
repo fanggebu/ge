@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="admin/_fragments :: head(~{::title})">
+
+    <title>分类新增</title>
+</head>
+<!--公共js导入，以下th:block生效-->
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/</th:block>/*/-->
+
+<body>
+<!-- 导航 -->
+<nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment m-padded-tb-mini">
+
+</nav>
+
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a th:href="@{/admin/types/input}" class=" active item">新增</a>
+                <a th:href="@{/admin/types}" class="item">列表</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 中间内容 -->
+    <div class="m-container-small m-padded-tb-large vertical">
+<!--        meassage消息提示-->
+
+        <!-- 分类 -->
+        <div class="ui container">
+            <form method="post" th:object="${type}" th:action="*{id}==null ? @{/admin/types}:@{/admin/types/{id}(id=*{id})}" class="ui form" >
+                <input type="hidden" name="id" th:value="*{id}">
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">名称</label>
+                        <input type="text" name="name" placeholder="分类名称" th:value="*{name}">
+                    </div>
+                </div>
+
+                <div class="ui error message"></div>
+                <!--/*/<div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                    <i class="close icon"></i>
+                    <div class="header">验证失败</div>
+                    <p th:errors="*{name}">提交信息不符合规划</p>
+                </div> /*/-->
+                <div class="ui right aligned container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button class="ui teal submit button">提交</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+<br><br>
+<!-- 底部 -->
+<footer th:replace="admin/_fragments :: footer" class="ui center aligned inverted vertical segment m-padded-tb-masssive" >
+
+</footer>
+
+</body>
+<script>
+
+
+
+
+
+
+    $('.menu-toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown();
+
+    $('.ui.form').form({
+        fields : {
+            name : {
+                identifier : 'name',
+                rules:[{
+                    type: 'empty',
+                    prompt: '标题： 请输入名称'
+                }]
+            }
+        }
+    });
+
+</script>
+
+</html>

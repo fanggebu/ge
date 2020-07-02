@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <title>后台管理</title>
+</head>
+
+<!--公共js导入，以下th:block生效-->
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/</th:block>/*/-->
+
+<body>
+    <!-- 导航 -->
+    <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini">
+
+    </nav>
+
+    <!-- 中间内容 -->
+    <div class="m-padded-tb-large ">
+        <div class="ui container">
+            <div class="ui center aligned segment m-padded-tb-large" style="height: 550px;">
+                <h1 class="ui teal segment m-margin-tb-tiny">登录成功了！</h1>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- 底部 -->
+    <footer th:replace="admin/_fragments :: footer" class="ui center aligned inverted vertical segment m-padded-tb-masssive" >
+
+    </footer>
+
+</body>
+<script>
+    $('.menu-toggle').click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+       on: 'hover'
+
+    });
+
+    
+</script>
+</html>
